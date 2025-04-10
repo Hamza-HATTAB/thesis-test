@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DataGridNamespace.Resources"
+                    xmlns:controls="clr-namespace:DataGridNamespace.Controls">
+
+    <!-- Style for platform-independent icons -->
+    <Style x:Key="CrossPlatformIconStyle" TargetType="controls:PlatformIconControl">
+        <Setter Property="Width" Value="18"/>
+        <Setter Property="Height" Value="18"/>
+        <Setter Property="IconForeground" Value="#808080"/>
+    </Style>
+
+    <!-- Style for icon buttons -->
+    <Style x:Key="IconButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="3"/>
+        <Setter Property="Margin" Value="3,0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    
+    <!-- Style for information icon button -->
+    <Style x:Key="InfoButtonStyle" TargetType="Button" BasedOn="{StaticResource IconButtonStyle}">
+        <Setter Property="ToolTip" Value="View Information"/>
+    </Style>
+    
+    <!-- Style for PDF icon button -->
+    <Style x:Key="PdfButtonStyle" TargetType="Button" BasedOn="{StaticResource IconButtonStyle}">
+        <Setter Property="ToolTip" Value="View PDF"/>
+    </Style>
+    
+    <!-- Style for message icon button -->
+    <Style x:Key="MessageButtonStyle" TargetType="Button" BasedOn="{StaticResource IconButtonStyle}">
+        <Setter Property="ToolTip" Value="Send Message"/>
+    </Style>
+    
+    <!-- Style for favorite icon button -->
+    <Style x:Key="FavoriteButtonStyle" TargetType="Button" BasedOn="{StaticResource IconButtonStyle}">
+        <Setter Property="ToolTip" Value="Add to Favorites"/>
+    </Style>
+    
+    <!-- Style for remove from favorites icon button -->
+    <Style x:Key="RemoveFavoriteButtonStyle" TargetType="Button" BasedOn="{StaticResource IconButtonStyle}">
+        <Setter Property="ToolTip" Value="Remove from Favorites"/>
+    </Style>
+</ResourceDictionary>

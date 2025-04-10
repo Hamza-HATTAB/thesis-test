@@ -1,0 +1,94 @@
+<Window x:Class="DataGridNamespace.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:admin="clr-namespace:DataGridNamespace.Admin"
+        x:Name="mainWindow"
+        Title="Thesis Management System" Height="720" Width="1280"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        ResizeMode="CanResizeWithGrip"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown">
+    <!-- Keep ONLY this one for dragging -->
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/WindowStyles.xaml"/>
+                <!-- Add other resource dictionaries if needed -->
+            </ResourceDictionary.MergedDictionaries>
+            <!-- Define WindowButtonStyle here if not in WindowStyles.xaml -->
+            <Style x:Key="WindowButtonStyle" TargetType="Button">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Width" Value="30"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Padding" Value="5"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Focusable" Value="False"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="Bd" Background="{TemplateBinding Background}" CornerRadius="3">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#4A6572"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <!-- Root Border: REMOVED MouseLeftButtonDown -->
+    <Border CornerRadius="10" BorderBrush="#2C3E50" BorderThickness="1" Background="White">
+        <Grid>
+            <!-- Grid Definitions -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Title Bar Grid -->
+            <Grid Grid.Row="0" Grid.ColumnSpan="2" Background="#2C3E50">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Thesis Management System" Foreground="White" VerticalAlignment="Center" Margin="10,0" FontWeight="Medium"/>
+                <!-- Window Control Buttons -->
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0,0,5,0">
+                    <Button x:Name="LogoutButton" Click="LogoutButton_Click" Style="{StaticResource WindowButtonStyle}" ToolTip="Logout">
+                        <TextBlock Text="Logout" Foreground="White" Margin="5,0" FontSize="12" VerticalAlignment="Center"/>
+                    </Button>
+                    <Button x:Name="MinimizeButton" Click="MinimizeButton_Click" Style="{StaticResource WindowButtonStyle}" ToolTip="Minimize">
+                        <Icon:PackIconMaterial Kind="WindowMinimize" Width="14" Height="14" Foreground="White"/>
+                    </Button>
+                    <Button x:Name="MaximizeButton" Click="MaximizeRestoreButton_Click" Style="{StaticResource WindowButtonStyle}" ToolTip="Maximize/Restore">
+                        <Icon:PackIconMaterial Kind="WindowMaximize" Width="14" Height="14" Foreground="White"/>
+                    </Button>
+                    <Button x:Name="CloseButton" Click="CloseButton_Click" Style="{StaticResource WindowButtonStyle}" ToolTip="Close">
+                        <Icon:PackIconMaterial Kind="Close" Width="14" Height="14" Foreground="#FF6B6B"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <!-- Sidebar Container -->
+            <ContentControl x:Name="SidebarContainer" Grid.Row="1" Grid.Column="0"/>
+
+            <!-- Main Content Frame -->
+            <Border Grid.Row="1" Grid.Column="1" Background="#F4F6F8" Padding="5">
+                <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" JournalOwnership="OwnsJournal"/>
+            </Border>
+        </Grid>
+    </Border>
+</Window>
